@@ -8,11 +8,11 @@ import jakarta.persistence.Id;
 import java.time.LocalDate;
 import java.time.Period;
 
-@Entity // indica que a classe é uma tabela no banco de dados.
+@Entity
 public class Pessoa {
 
-    @Id // indica que o id é uma chave primaria no banco de dados.
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //gera o valor do id automaticamente no banco de dados.
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private LocalDate dataNascimento;

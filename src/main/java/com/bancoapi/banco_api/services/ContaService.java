@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service // indica que essa classe é um serviço do Spring, contém a lógica de negócios.
+@Service
 public class ContaService {
 
     @Autowired

@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController //indica que essa classe é um controlador REST, ou seja, vai lidar com requisições HTTP (GET, POST, PUT, DELETE).
-@RequestMapping("/contas") // define a URL base para todas as requisições desse controlador.
+@RestController
+@RequestMapping("/contas")
 public class ContaController {
 
     @Autowired
     private ContaService contaService;
 
-    @PostMapping //define o endpoint para criar uma nova conta.
+    @PostMapping
     public ResponseEntity<Conta> criarConta (@RequestBody Conta conta) {
         Conta novaConta = contaService.criarConta(conta);
         return ResponseEntity.ok(novaConta);
@@ -27,22 +27,22 @@ public class ContaController {
         return ResponseEntity.ok("Rendimento aplicado com sucesso");
     }
 
-    @GetMapping //define o endpoint para listar e buscar contas especificas.
+    @GetMapping //define o endpoint para buscar e listar.
     public List<Conta> listarContas () {
         return contaService.listarContas();
     }
 
-    @GetMapping("/{id}") //define o endpoint para listar e buscar contas especificas.
+    @GetMapping("/{id}") //define o endpoint para buscar contas especificas.
     public Conta obterConta (@PathVariable Long id) { //@PathVariable Usa valores que estão na URL diretamente (como IDs).
         return contaService.obterConta(id);
     }
 
-    @PutMapping("/{id}/deposito") //define os endpoints para depositar e sacar.
+    @PutMapping("/{id}/deposito") //define o endpoint para depositar.
     public Conta depositar (@PathVariable Long id, @RequestParam double valor) { //@RequestParam Usa valores que estão após ? (como parâmetros de consulta).
         return contaService.depositar(id, valor);
     }
 
-    @PutMapping("/{id}/sacar") //define os endpoints para depositar e sacar.
+    @PutMapping("/{id}/sacar") //define o endpoint para sacar.
     public Conta sacar (@PathVariable Long id, @RequestParam double valor) {
         return contaService.sacar(id, valor);
     }
